@@ -2,17 +2,19 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 // BEGIN (write your solution here)
-
+import { createTask } from '../slices/tasksSlice';
 // END
 
 const NewTaskForm = () => {
   const [name, setName] = useState('');
   const dispatch = useDispatch();
 
-  const handleAddTask = (e) => {
-    // BEGIN (write your solution here)
-
-    // END
+  const handleAddTask = async (e) => {
+      // BEGIN (write your solution here)
+      e.preventDefault();
+      await dispatch(createTask(name));
+      setName('');
+      // END
   };
 
   const onChange = (e) => setName(e.target.value);
